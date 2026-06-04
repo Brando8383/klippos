@@ -178,7 +178,7 @@ mke2fs 1.47.0 (5-Feb-2023)
 Creating regular file /home/brando/klipper-distro/buildroot-2024.02/output/images/rootfs.ext2
 64-bit filesystem support is not enabled.  The larger fields afforded by this feature enable full-strength checksumming.  Pass -O 64bit to rectify.
 Creating filesystem with 131072 4k blocks and 32768 inodes
-Filesystem UUID: 2133c39a-6c31-451f-8340-147d0edd6893
+Filesystem UUID: 51cc37a6-5d72-437a-aa0d-34aaa9e4177d
 Superblock backups stored on blocks: 
 	32768, 98304
 
@@ -239,3 +239,26 @@ Created symlink /home/brando/klipper-distro/buildroot-2024.02/output/build/build
 Created symlink /home/brando/klipper-distro/buildroot-2024.02/output/build/buildroot-fs/tar/target/etc/systemd/system/multi-user.target.wants/systemd-networkd.service → /usr/lib/systemd/system/systemd-networkd.service.
 Created symlink /home/brando/klipper-distro/buildroot-2024.02/output/build/buildroot-fs/tar/target/etc/systemd/system/graphical.target.wants/xorg.service → /usr/lib/systemd/system/xorg.service.
 Created symlink /home/brando/klipper-distro/buildroot-2024.02/output/build/buildroot-fs/tar/target/etc/systemd/system/ctrl-alt-del.target → /usr/lib/systemd/system/reboot.target.
+[7m>>>   Executing post-image script /home/brando/klipper-distro/klipos/board/klipos/post-image.sh[27m
+Assembling KlipOS disk image...
+INFO: cmd: "mkdir -p "/home/brando/klipper-distro/buildroot-2024.02/output/build/genimage.tmp"" (stderr):
+INFO: cmd: "rm -rf "/home/brando/klipper-distro/buildroot-2024.02/output/build/genimage.tmp"/*" (stderr):
+INFO: cmd: "mkdir -p "/home/brando/klipper-distro/buildroot-2024.02/output/build/genimage.tmp"" (stderr):
+INFO: cmd: "cp -a "/home/brando/klipper-distro/buildroot-2024.02/output/target" "/home/brando/klipper-distro/buildroot-2024.02/output/build/genimage.tmp/root"" (stderr):
+INFO: hdimage(klipos.img): The option 'gpt' is deprecated. Use 'partition-table-type' instead
+INFO: cmd: "mkdir -p "/home/brando/klipper-distro/buildroot-2024.02/output/images"" (stderr):
+INFO: vfat(boot.vfat): cmd: "mkdosfs   '/home/brando/klipper-distro/buildroot-2024.02/output/images/boot.vfat'" (stderr):
+INFO: vfat(boot.vfat): adding file 'bzImage' as 'bzImage' ...
+INFO: vfat(boot.vfat): cmd: "MTOOLS_SKIP_CHECK=1 mcopy -sp -i '/home/brando/klipper-distro/buildroot-2024.02/output/images/boot.vfat' '/home/brando/klipper-distro/buildroot-2024.02/output/images/bzImage' '::'" (stderr):
+INFO: vfat(boot.vfat): adding file 'efi-part/EFI' as 'efi-part/EFI' ...
+INFO: vfat(boot.vfat): cmd: "MTOOLS_SKIP_CHECK=1 mcopy -sp -i '/home/brando/klipper-distro/buildroot-2024.02/output/images/boot.vfat' '/home/brando/klipper-distro/buildroot-2024.02/output/images/efi-part/EFI' '::'" (stderr):
+INFO: hdimage(klipos.img): adding partition 'boot' (in MBR) from 'boot.vfat' ...
+INFO: hdimage(klipos.img): adding partition 'rootfs' (in MBR) from 'rootfs.ext4' ...
+INFO: hdimage(klipos.img): adding partition '[MBR]' ...
+INFO: hdimage(klipos.img): adding partition '[GPT header]' ...
+INFO: hdimage(klipos.img): adding partition '[GPT array]' ...
+INFO: hdimage(klipos.img): adding partition '[GPT backup]' ...
+INFO: hdimage(klipos.img): writing GPT
+INFO: hdimage(klipos.img): writing protective MBR
+INFO: hdimage(klipos.img): writing MBR
+KlipOS disk image complete.
