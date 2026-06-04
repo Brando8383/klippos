@@ -395,7 +395,7 @@ BR2_FORTIFY_SOURCE_1=y
 #
 BR2_ROOTFS_SKELETON_DEFAULT=y
 # BR2_ROOTFS_SKELETON_CUSTOM is not set
-BR2_TARGET_GENERIC_HOSTNAME="klipos"
+BR2_TARGET_GENERIC_HOSTNAME="klippos"
 BR2_TARGET_GENERIC_ISSUE="Welcome to KlipOS"
 BR2_TARGET_GENERIC_PASSWD_SHA256=y
 # BR2_TARGET_GENERIC_PASSWD_SHA512 is not set
@@ -415,7 +415,7 @@ BR2_ROOTFS_DEVICE_TABLE="system/device_table.txt"
 # BR2_ROOTFS_DEVICE_TABLE_SUPPORTS_EXTENDED_ATTRIBUTES is not set
 BR2_ROOTFS_MERGED_USR=y
 BR2_TARGET_ENABLE_ROOT_LOGIN=y
-BR2_TARGET_GENERIC_ROOT_PASSWD="klipos"
+BR2_TARGET_GENERIC_ROOT_PASSWD="klippos"
 BR2_SYSTEM_BIN_SH_BUSYBOX=y
 # BR2_SYSTEM_BIN_SH_BASH is not set
 # BR2_SYSTEM_BIN_SH_DASH is not set
@@ -442,11 +442,11 @@ BR2_TARGET_TZ_INFO=y
 BR2_TARGET_TZ_ZONELIST="default"
 BR2_TARGET_LOCALTIME="Etc/UTC"
 BR2_ROOTFS_USERS_TABLES=""
-BR2_ROOTFS_OVERLAY="/home/brando/klipper-distro/klipos/board/klipos/overlay"
+BR2_ROOTFS_OVERLAY="/home/brando/klipper-distro/klippos/board/klippos/overlay"
 BR2_ROOTFS_PRE_BUILD_SCRIPT=""
-BR2_ROOTFS_POST_BUILD_SCRIPT="/home/brando/klipper-distro/klipos/board/klipos/post-build.sh"
+BR2_ROOTFS_POST_BUILD_SCRIPT="/home/brando/klipper-distro/klippos/board/klippos/post-build.sh"
 BR2_ROOTFS_POST_FAKEROOT_SCRIPT=""
-BR2_ROOTFS_POST_IMAGE_SCRIPT="/home/brando/klipper-distro/klipos/board/klipos/post-image.sh"
+BR2_ROOTFS_POST_IMAGE_SCRIPT="/home/brando/klipper-distro/klippos/board/klippos/post-image.sh"
 BR2_ROOTFS_POST_SCRIPT_ARGS=""
 
 #
