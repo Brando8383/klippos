@@ -1,19 +1,19 @@
 #!/bin/bash
-# KlipOS Rootfs Builder
-# Builds a complete Debian 12 rootfs for KlipOS
+# KlippOS Rootfs Builder
+# Builds a complete Debian 12 rootfs for KlippOS
 # Run as root or with sudo
 
 set -e
 
-ROOTFS_DIR="/home/brando/klipper-distro/klipos-rootfs"
-ROOTFS_IMG="/home/brando/klipper-distro/klipos-rootfs.ext4"
+ROOTFS_DIR="/home/brando/klipper-distro/klippos-rootfs"
+ROOTFS_IMG="/home/brando/klipper-distro/klippos-rootfs.ext4"
 DEBIAN_MIRROR="http://deb.debian.org/debian"
 DEBIAN_RELEASE="bookworm"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-OVERLAY_DIR="$(dirname $SCRIPT_DIR)/board/klipos/overlay"
+OVERLAY_DIR="$(dirname $SCRIPT_DIR)/board/klippos/overlay"
 
 echo "========================================="
-echo "KlipOS Rootfs Builder"
+echo "KlippOS Rootfs Builder"
 echo "========================================="
 
 # Must run as root
@@ -96,7 +96,7 @@ echo ""
 echo ">>> Stage 3: Configuring system..."
 chroot $ROOTFS_DIR /bin/bash << CHROOT
 # Hostname
-echo "klipos" > /etc/hostname
+echo "klippos" > /etc/hostname
 
 # Locale
 echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
@@ -106,33 +106,33 @@ locale-gen
 ln -sf /usr/share/zoneinfo/America/Chicago /etc/localtime
 
 # Users
-useradd -m -s /bin/bash klipos
-usermod -aG sudo,tty,dialout,video,audio,input klipos
-echo "klipos:klipos" | chpasswd
-echo "root:klipos" | chpasswd
+useradd -m -s /bin/bash klippos
+usermod -aG sudo,tty,dialout,video,audio,input klippos
+echo "klippos:klippos" | chpasswd
+echo "root:klippos" | chpasswd
 
 # Sudoers
-echo "klipos ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+echo "klippos ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 CHROOT
 echo ">>> Stage 3 complete."
 
-# Stage 4 - install KlipOS scripts and services
+# Stage 4 - install KlippOS scripts and services
 echo ""
-echo ">>> Stage 4: Installing KlipOS scripts and services..."
+echo ">>> Stage 4: Installing KlippOS scripts and services..."
 
 # Copy overlay files
 cp -a $OVERLAY_DIR/. $ROOTFS_DIR/
 
 # Copy scripts
-cp $SCRIPT_DIR/firstboot/klipos-setup.sh $ROOTFS_DIR/usr/local/bin/
-cp $SCRIPT_DIR/firstboot/klipos-session.sh $ROOTFS_DIR/usr/local/bin/ 2>/dev/null || true
-chmod +x $ROOTFS_DIR/usr/local/bin/klipos-setup.sh
-chmod +x $ROOTFS_DIR/usr/local/bin/klipos-session.sh 2>/dev/null || true
+cp $SCRIPT_DIR/firstboot/klippos-setup.sh $ROOTFS_DIR/usr/local/bin/
+cp $SCRIPT_DIR/firstboot/klippos-session.sh $ROOTFS_DIR/usr/local/bin/ 2>/dev/null || true
+chmod +x $ROOTFS_DIR/usr/local/bin/klippos-setup.sh
+chmod +x $ROOTFS_DIR/usr/local/bin/klippos-session.sh 2>/dev/null || true
 
 # Enable services
 chroot $ROOTFS_DIR /bin/bash << CHROOT
-systemctl enable klipos-setup.service
-systemctl enable klipos-display.service
+systemctl enable klippos-setup.service
+systemctl enable klippos-display.service
 systemctl enable NetworkManager
 systemctl enable ssh
 systemctl enable nginx
@@ -150,9 +150,9 @@ umount $ROOTFS_DIR/sys
 # Copy printer.cfg template
 echo ""
 echo ">>> Installing printer.cfg template..."
-mkdir -p $ROOTFS_DIR/home/klipos
-cp $KLIPOS_DIR/board/klipos/overlay/etc/klipper/printer.cfg.template $ROOTFS_DIR/home/klipos/printer.cfg.template
-chown -R 1000:1000 $ROOTFS_DIR/home/klipos
+mkdir -p $ROOTFS_DIR/home/klippos
+cp $KLIPOS_DIR/board/klippos/overlay/etc/klipper/printer.cfg.template $ROOTFS_DIR/home/klippos/printer.cfg.template
+chown -R 1000:1000 $ROOTFS_DIR/home/klippos
 echo ">>> printer.cfg template installed."
 
 # Stage 5 - pack into ext4 image
@@ -161,14 +161,14 @@ echo ">>> Stage 5: Creating ext4 image..."
 rm -f $ROOTFS_IMG
 dd if=/dev/zero of=$ROOTFS_IMG bs=1M count=2560
 mkfs.ext4 $ROOTFS_IMG
-mkdir -p /mnt/klipos-rootfs
-mount $ROOTFS_IMG /mnt/klipos-rootfs
-cp -a $ROOTFS_DIR/. /mnt/klipos-rootfs/
-umount /mnt/klipos-rootfs
+mkdir -p /mnt/klippos-rootfs
+mount $ROOTFS_IMG /mnt/klippos-rootfs
+cp -a $ROOTFS_DIR/. /mnt/klippos-rootfs/
+umount /mnt/klippos-rootfs
 echo ">>> Stage 5 complete."
 
 echo ""
 echo "========================================="
-echo "KlipOS rootfs build complete!"
+echo "KlippOS rootfs build complete!"
 echo "Image: $ROOTFS_IMG"
 echo "========================================="

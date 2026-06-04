@@ -1,5 +1,5 @@
 #!/bin/bash
-# KlipOS post-image script
+# KlippOS post-image script
 # Assembles bootable disk image from Buildroot output
 
 BINARIES_DIR=$1
@@ -7,7 +7,7 @@ BOARD_DIR="$(dirname $0)"
 GENIMAGE_CFG="${BOARD_DIR}/genimage.cfg"
 GENIMAGE_TMP="${BUILD_DIR}/genimage.tmp"
 
-echo "Assembling KlipOS disk image..."
+echo "Assembling KlippOS disk image..."
 
 rm -rf "${GENIMAGE_TMP}"
 
@@ -18,4 +18,4 @@ genimage \
     --outputpath "${BINARIES_DIR}" \
     --config "${GENIMAGE_CFG}"
 
-echo "KlipOS disk image complete."
+echo "KlippOS disk image complete."

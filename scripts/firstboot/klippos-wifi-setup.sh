@@ -1,9 +1,9 @@
 #!/bin/bash
-# KlipOS WiFi Setup Wizard
+# KlippOS WiFi Setup Wizard
 # Runs on first boot to configure WiFi before KIAUH install
 
-LOGFILE="/var/log/klipos-setup.log"
-WIFI_DONE="/etc/klipos/.wifi_configured"
+LOGFILE="/var/log/klippos-setup.log"
+WIFI_DONE="/etc/klippos/.wifi_configured"
 
 # Skip if already configured
 if [ -f "$WIFI_DONE" ]; then
@@ -13,17 +13,17 @@ fi
 # Check if already connected
 if ping -c 1 github.com &>/dev/null; then
     echo "Already connected to internet, skipping WiFi setup." | tee -a $LOGFILE
-    mkdir -p /etc/klipos
+    mkdir -p /etc/klippos
     touch $WIFI_DONE
     exit 0
 fi
 
 clear
 echo "========================================="
-echo "          KlipOS WiFi Setup"
+echo "          KlippOS WiFi Setup"
 echo "========================================="
 echo ""
-echo "KlipOS needs internet access to install"
+echo "KlippOS needs internet access to install"
 echo "Klipper, Moonraker, and Fluidd."
 echo ""
 
@@ -59,7 +59,7 @@ sleep 5
 if ping -c 1 github.com &>/dev/null; then
     echo ""
     echo "Successfully connected to $WIFI_SSID!" | tee -a $LOGFILE
-    mkdir -p /etc/klipos
+    mkdir -p /etc/klippos
     touch $WIFI_DONE
 else
     echo ""

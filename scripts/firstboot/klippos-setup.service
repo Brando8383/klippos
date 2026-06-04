@@ -1,12 +1,12 @@
 [Unit]
-Description=KlipOS First Boot Setup
+Description=KlippOS First Boot Setup
 After=network-online.target
 Wants=network-online.target
-ConditionPathExists=!/etc/klipos/.setup_complete
+ConditionPathExists=!/etc/klippos/.setup_complete
 
 [Service]
 Type=oneshot
-ExecStart=/usr/local/bin/klipos-setup.sh
+ExecStart=/usr/local/bin/klippos-setup.sh
 RemainAfterExit=yes
 StandardOutput=journal+console
 StandardError=journal+console

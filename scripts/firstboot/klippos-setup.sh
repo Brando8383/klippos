@@ -1,14 +1,14 @@
 #!/bin/bash
-# KlipOS First Boot Setup
+# KlippOS First Boot Setup
 # Runs once on first boot to install Klipper stack via KIAUH
 
-LOGFILE="/var/log/klipos-setup.log"
-KIAUH_DIR="/home/klipos/kiauh"
+LOGFILE="/var/log/klippos-setup.log"
+KIAUH_DIR="/home/klippos/kiauh"
 KIAUH_REPO="https://github.com/dw-0/kiauh.git"
-SETUP_DONE="/etc/klipos/.setup_complete"
+SETUP_DONE="/etc/klippos/.setup_complete"
 
 echo "========================================" | tee -a $LOGFILE
-echo "KlipOS First Boot Setup" | tee -a $LOGFILE
+echo "KlippOS First Boot Setup" | tee -a $LOGFILE
 echo "Started: $(date)" | tee -a $LOGFILE
 echo "========================================" | tee -a $LOGFILE
 
@@ -20,7 +20,7 @@ fi
 
 # Run WiFi setup wizard first
 echo "Starting WiFi setup..." | tee -a $LOGFILE
-bash /usr/local/bin/klipos-wifi-setup.sh
+bash /usr/local/bin/klippos-wifi-setup.sh
 
 # Wait for network
 echo "Waiting for network..." | tee -a $LOGFILE
@@ -39,15 +39,15 @@ done
 
 # Clone and run KIAUH
 echo "Cloning KIAUH..." | tee -a $LOGFILE
-cd /home/klipos
+cd /home/klippos
 git clone $KIAUH_REPO $KIAUH_DIR
-chown -R klipos:klipos $KIAUH_DIR
+chown -R klippos:klippos $KIAUH_DIR
 cd $KIAUH_DIR
 
 echo "Running KIAUH installer..." | tee -a $LOGFILE
-sudo -u klipos bash $KIAUH_DIR/kiauh.sh
+sudo -u klippos bash $KIAUH_DIR/kiauh.sh
 
 # Mark setup complete
-mkdir -p /etc/klipos
+mkdir -p /etc/klippos
 touch $SETUP_DONE
-echo "KlipOS setup complete: $(date)" | tee -a $LOGFILE
+echo "KlippOS setup complete: $(date)" | tee -a $LOGFILE

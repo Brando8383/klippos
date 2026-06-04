@@ -1,0 +1,19 @@
+[Unit]
+Description=KlippOS Display Session
+After=systemd-user-sessions.service klippos-setup.service
+Wants=klippos-setup.service
+
+[Service]
+Type=simple
+User=klippos
+PAMName=login
+TTYPath=/dev/tty1
+StandardInput=tty
+StandardOutput=tty
+ExecStartPre=/bin/sleep 2
+ExecStart=/usr/bin/xinit /usr/local/bin/klippos-session.sh -- :0 vt1 -nolisten tcp
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

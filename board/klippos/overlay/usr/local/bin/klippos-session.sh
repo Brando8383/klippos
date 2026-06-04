@@ -1,10 +1,10 @@
 #!/bin/bash
-# KlipOS X Session Startup
+# KlippOS X Session Startup
 # Launches openbox and Fluidd kiosk after Klipper stack is running
 
-LOGFILE="/var/log/klipos-session.log"
+LOGFILE="/var/log/klippos-session.log"
 
-echo "Starting KlipOS session: $(date)" >> $LOGFILE
+echo "Starting KlippOS session: $(date)" >> $LOGFILE
 
 # Disable screen blanking and power management
 xset s off

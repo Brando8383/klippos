@@ -1,4 +1,4 @@
-# KlipOS
+# KlippOS
 
 A minimal, purpose-built Linux distribution for dedicated Klipper 3D printer control stations.
 
@@ -26,7 +26,7 @@ Built on Debian 12 (Bookworm) with a custom Buildroot kernel, designed for x86_6
 - [x] NetworkManager + WiFi support
 - [x] First boot KIAUH installer (Klipper + Moonraker + Fluidd)
 - [x] Auto-login X session with Fluidd kiosk
-- [x] Flashable disk image (klipos.img)
+- [x] Flashable disk image (klippos.img)
 - [x] First boot WiFi setup wizard
 - [x] Default printer.cfg template
 - [x] Release v0.1
@@ -38,14 +38,14 @@ Built on Debian 12 (Bookworm) with a custom Buildroot kernel, designed for x86_6
 
 ## Flashing
 ```bash
-sudo dd if=klipos.img of=/dev/sdX bs=4M status=progress && sync
+sudo dd if=klippos.img of=/dev/sdX bs=4M status=progress && sync
 ```
 Replace `/dev/sdX` with your USB drive.
 
 ## Building from source
 ```bash
-git clone https://github.com/Brando8383/klipos.git
-cd klipos
+git clone https://github.com/Brando8383/klippos.git
+cd klippos
 bash scripts/build-rootfs.sh
 ```
 

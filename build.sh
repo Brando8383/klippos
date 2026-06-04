@@ -1,6 +1,6 @@
 #!/bin/bash
-# KlipOS Master Build Script
-# Builds a complete flashable KlipOS image from scratch
+# KlippOS Master Build Script
+# Builds a complete flashable KlippOS image from scratch
 # Usage: sudo ./build.sh
 
 set -e
@@ -14,7 +14,7 @@ IMAGES_DIR="$BUILDROOT_DIR/output/images"
 LOGFILE="$KLIPOS_DIR/build.log"
 
 echo "========================================="
-echo " KlipOS Master Build Script"
+echo " KlippOS Master Build Script"
 echo "========================================="
 echo "Started: $(date)" | tee -a $LOGFILE
 
@@ -53,7 +53,7 @@ echo ">>> Buildroot OK."
 # Step 3 - Build kernel and bootloader
 echo ""
 echo ">>> Step 3: Building kernel and bootloader..."
-cp $KLIPOS_DIR/configs/klipos_defconfig $BUILDROOT_DIR/.config
+cp $KLIPOS_DIR/configs/klippos_defconfig $BUILDROOT_DIR/.config
 cd $BUILDROOT_DIR
 make 2>&1 | tee -a $LOGFILE
 echo ">>> Kernel and bootloader build complete."
@@ -67,26 +67,26 @@ echo ">>> Debian rootfs build complete."
 # Step 5 - Copy rootfs to images directory
 echo ""
 echo ">>> Step 5: Preparing images..."
-cp /home/brando/klipper-distro/klipos-rootfs.ext4 $IMAGES_DIR/rootfs-debian.ext4
+cp /home/brando/klipper-distro/klippos-rootfs.ext4 $IMAGES_DIR/rootfs-debian.ext4
 
 # Step 6 - Assemble final image
 echo ""
-echo ">>> Step 6: Assembling KlipOS image..."
+echo ">>> Step 6: Assembling KlippOS image..."
 rm -rf $BUILDROOT_DIR/output/build/genimage.tmp
 genimage \
     --rootpath $BUILDROOT_DIR/output/target \
     --tmppath $BUILDROOT_DIR/output/build/genimage.tmp \
     --inputpath $IMAGES_DIR \
     --outputpath $IMAGES_DIR \
-    --config $KLIPOS_DIR/board/klipos/genimage.cfg
+    --config $KLIPOS_DIR/board/klippos/genimage.cfg
 
 # Step 7 - Copy final image to output directory
-cp $IMAGES_DIR/klipos.img $OUTPUT_DIR/klipos.img
+cp $IMAGES_DIR/klippos.img $OUTPUT_DIR/klippos.img
 
 echo ""
 echo "========================================="
-echo " KlipOS build complete!"
-echo " Image: $OUTPUT_DIR/klipos.img"
-echo " Flash: sudo dd if=$OUTPUT_DIR/klipos.img of=/dev/sdX bs=4M status=progress"
+echo " KlippOS build complete!"
+echo " Image: $OUTPUT_DIR/klippos.img"
+echo " Flash: sudo dd if=$OUTPUT_DIR/klippos.img of=/dev/sdX bs=4M status=progress"
 echo "========================================="
 echo "Finished: $(date)" | tee -a $LOGFILE
