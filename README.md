@@ -27,9 +27,9 @@ Built on Debian 12 (Bookworm) with a custom Buildroot kernel, designed for x86_6
 - [x] First boot KIAUH installer (Klipper + Moonraker + Fluidd)
 - [x] Auto-login X session with Fluidd kiosk
 - [x] Flashable disk image (klipos.img)
-- [ ] First boot WiFi setup wizard
-- [ ] Default printer.cfg
-- [ ] Release v0.1
+- [x] First boot WiFi setup wizard
+- [x] Default printer.cfg template
+- [x] Release v0.1
 
 ## Hardware Target
 - Architecture: x86_64
