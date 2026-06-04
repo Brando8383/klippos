@@ -1,0 +1,17 @@
+# Build outputs
+output/
+*.img
+*.ext4
+*.tar
+*.cpio
+
+# Buildroot
+buildroot-*/
+
+# Logs
+build.log
+
+# Editor files
+*.swp
+*.swo
+.vscode/
