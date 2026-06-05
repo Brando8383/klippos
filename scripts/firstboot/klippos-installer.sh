@@ -145,11 +145,11 @@ set default="0"
 set timeout="3"
 
 menuentry "KlippOS" {
-    linux /boot/bzImage root=UUID=$ROOT_UUID rootwait rw console=tty1 quiet
+    linux /boot/bzImage root=LABEL=klippos-root rootwait rw console=tty1 quiet
 }
 
 menuentry "KlippOS (verbose)" {
-    linux /boot/bzImage root=UUID=$ROOT_UUID rootwait rw console=tty1
+    linux /boot/bzImage root=LABEL=klippos-root rootwait rw console=tty1
 }
 GRUBCFG
 

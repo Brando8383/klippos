@@ -2,7 +2,7 @@
 # KlippOS First Boot Setup
 # Runs once on first boot to install Klipper stack via KIAUH
 
-LOGFILE="/var/log/klippos-setup.log"
+LOGFILE="/home/klippos/klippos-setup.log"
 KIAUH_DIR="/home/klippos/kiauh"
 KIAUH_REPO="https://github.com/dw-0/kiauh.git"
 SETUP_DONE="/etc/klippos/.setup_complete"
